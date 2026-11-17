@@ -71,14 +71,14 @@ Operating at a **1000 Hz real-time closed-loop control frequency**, the engine a
 
 ### Matsuoka-Kuramoto Adaptive Phase Oscillator (`include/phase_oscillator.hpp`)
 - Implements coupled non-linear differential equations governing spinal Central Pattern Generators (CPG).
-- Dynamically modulates gait rhythm ($d\theta/dt = \omega + K \cdot \sin(\theta_{\text{target}} - \theta)$) to continuously synchronize stance phase (60% duty cycle) and swing phase (40% duty cycle) with cortical movement intention.
+- Dynamically modulates gait rhythm $d\theta/dt = \omega + K \cdot \sin(\theta_{\text{target}} - \theta)$ to continuously synchronize stance phase (60% duty cycle) and swing phase (40% duty cycle) with cortical movement intention.
 
 ### CUDA 64-Channel Spatial EES Pattern Kernel (`src/cuda_spinal_pattern_generator.cu`)
 - Computes spatial activation distributions across human lumbosacral spinal cord segments (L2, L3, L4, L5, S1) targeting specific motoneuron pools (Flexors: Iliopsoas, Tibialis Anterior; Extensors: Quadriceps, Gastrocnemius).
 - Optimized 2D grid/block layout (`dim3(8, 8)`) performing spatial gaussian kernel convolution, executed in **~38.5 µs** on the GPU.
 
 ### Zero-Copy PCIe Host/Device Memory Architecture
-- Eliminates memory allocation allocations inside the real-time hot loop via `cudaHostAllocMapped` (pinned zero-copy host memory mapped directly into CUDA address space).
+- Eliminates memory allocations inside the real-time hot loop via `cudaHostAllocMapped` (pinned zero-copy host memory mapped directly into CUDA address space).
 - Locks execution threads via `cudaSetDeviceFlags(cudaDeviceScheduleSpin)` to bypass OS hypervisor thread-yield scheduling stalls.
 
 ---
@@ -114,8 +114,8 @@ The system was benchmarked over **10,000 consecutive closed-loop cycles at 1000 
 | **Matsuoka-Kuramoto Adaptive Phase Oscillator** | CPU (Native C++) | ~0.15 µs | 0.25 % |
 | **ISO 14708-3 Medical Bio-Safety Sentinel** | CPU (Inlined Guard) | ~0.03 µs | 0.05 % |
 | **CUDA Lumbosacral EES Spatial Activation** | GPU (CUDA Kernel) | ~38.50 µs | 62.84 % |
-| **PCIe Zero-Copy Host/Device Data Transfers** | PCIe Bus | ~12.50 µs | 20.40 % |
-| **Telemetry & Lock-Free SPSC Queue Management** | CPU Lock-Free | ~10.02 µs | 16.35 % |
+| **PCIe Zero-Copy Host/Device Data Transfers** | PCIe Bus | ~20.26 µs | 33.07 % |
+| **Telemetry & Lock-Free SPSC Queue Management** | CPU Lock-Free | ~2.26 µs | 3.68 % |
 
 ---
 
@@ -139,7 +139,7 @@ The engine generates real-time telemetry artifacts rendered in high-contrast dar
 
 ### Gait & Kinematic Phase Portraits
 ![Gait Cycle Phase Portrait](assets/gait_cycle_phase_portrait.png)
-*Figure 5: Matsuoka-Kuramoto Gait Phase Portrait ($\\theta$ vs $d\\theta/dt$) showing stance/swing limit cycles.*
+*Figure 5: Matsuoka-Kuramoto Gait Phase Portrait ($	heta$ vs $d	heta/dt$) showing stance/swing limit cycles.*
 
 ![Leg Kinematics Phase Portrait](assets/leg_kinematics_phase_portrait.png)
 *Figure 6: Reconstructed Hip, Knee, and Ankle angular joint kinematics phase portraits.*
