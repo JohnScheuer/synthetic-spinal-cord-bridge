@@ -1,0 +1,26 @@
+# Build outputs
+build/
+bin/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Telemetry data & logs
+*.csv
+latency_benchmark.csv
+ees_pattern.csv
+
+# Python & Matplotlib cache
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store

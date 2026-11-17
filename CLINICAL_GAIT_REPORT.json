@@ -1,0 +1,29 @@
+{
+  "patient_id": "SIM-ANONYMIZED-001",
+  "session_id": "BENCHMARK-SYNTHETIC",
+  "control_loop_hz": 1000.0,
+  "total_cycles": 10000,
+  "latency_statistics_us": {
+    "min": 33.566,
+    "mean": 61.266408199999994,
+    "p50": 51.206,
+    "p90": 74.692,
+    "p99": 172.27306000000016,
+    "p99_9": 318.1234120000003,
+    "max": 7678.08,
+    "sla_violations_percent": 0.03
+  },
+  "bio_safety_margins": {
+    "max_safe_current_mA": 9.5,
+    "max_charge_density_uC_cm2": 30.0,
+    "actual_peak_current_mA": 6.29268,
+    "current_headroom_percent": 33.76126315789474,
+    "iso_14708_3_compliant": true
+  },
+  "gait_parameters": {
+    "target_stride_frequency_hz": 1.0,
+    "stance_phase_percent": 60.0,
+    "swing_phase_percent": 40.0,
+    "cadence_steps_per_min": 120.0
+  }
+}
